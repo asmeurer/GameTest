@@ -11,19 +11,19 @@ import SpriteKit
 class GameScene: SKScene {
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
-//        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
-//
-//        myLabel.text = "Hello, World!";
-//        myLabel.fontSize = 65;
-//        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-//
-//        self.addChild(myLabel)
-		for s in [sprite, sprite2] {
-        s.xScale = 3
-        s.yScale = 3
-        s.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
-}
-        self.addChild(sprite)
+        //        let myLabel = SKLabelNode(fontNamed:"Chalkduster")
+        //
+        //        myLabel.text = "Hello, World!";
+        //        myLabel.fontSize = 65;
+        //        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
+        //
+        //        self.addChild(myLabel)
+        for s in [sprite, sprite2] {
+            s.xScale = 3
+            s.yScale = 3
+            s.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+            self.addChild(s)
+        }
 
     }
 
@@ -35,22 +35,22 @@ class GameScene: SKScene {
 
 
         for touch: AnyObject in touches {
-			let location = touch.locationInNode(self)
+            let location = touch.locationInNode(self)
 
-			let action = SKAction.moveTo(location, duration: 1)
+            let action = SKAction.moveTo(location, duration: 1)
             sprite.runAction(SKAction.repeatAction(action, count: 1))
 
         }
     }
 
-    override func touchesMoved(touches: NSSet!, withEvent event: UIEvent!) {
+    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
 
-        for touch: ANyObject in touches {
-			let location = touch.locationInNode(self)
+        for touch: AnyObject in touches {
+            let location = touch.locationInNode(self)
 
-			let action = SKAction.moveTo(location)
-
-		}
+            let action = SKAction.moveTo(location, duration: 0.1)
+            sprite2.runAction(SKAction.repeatAction(action, count: 1))
+        }
     }
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
