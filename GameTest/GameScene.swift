@@ -18,8 +18,6 @@ class GameScene: SKScene {
 //        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
 //
 //        self.addChild(myLabel)
-        let sprite = SKSpriteNode(color: UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0), size: CGSize(width: 10, height: 10))
-
         sprite.xScale = 3
         sprite.yScale = 3
         sprite.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
@@ -27,7 +25,8 @@ class GameScene: SKScene {
         self.addChild(sprite)
 
     }
-    
+    let sprite = SKSpriteNode(color: UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0), size: CGSize(width: 10, height: 10))
+
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
 
