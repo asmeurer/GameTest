@@ -18,7 +18,7 @@ class GameScene: SKScene {
         //        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         //
         //        self.addChild(myLabel)
-        for s in [sprite, sprite2] {
+        for s in [sprite, sprite2, sprite3] {
             s.xScale = 3
             s.yScale = 3
             s.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
@@ -29,6 +29,7 @@ class GameScene: SKScene {
 
     let sprite = SKSpriteNode(color: UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0), size: CGSize(width: 10, height: 10))
     let sprite2 = SKSpriteNode(color: UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0), size: CGSize(width: 10, height: 10))
+    let sprite3 = SKSpriteNode(color: UIColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.0), size: CGSize(width: 10, height: 10))
 
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
@@ -52,6 +53,16 @@ class GameScene: SKScene {
             sprite2.runAction(SKAction.repeatAction(action, count: 1))
         }
     }
+
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        for touch: AnyObject in touches {
+            let location = touch.locationInNode(self)
+
+            let action = SKAction.moveTo(location, duration: 1.0)
+            sprite3.runAction(SKAction.repeatAction(action, count: 1))
+        }
+    }
+
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
     }
