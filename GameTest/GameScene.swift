@@ -18,10 +18,19 @@ class GameScene: SKScene {
         //        myLabel.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame));
         //
         //        self.addChild(myLabel)
+        let center = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+
         for s in [sprite, sprite2, sprite3] {
             s.xScale = 3
             s.yScale = 3
-            s.position = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
+            s.position = center
+            var physics_body = SKPhysicsBody(circleOfRadius: 20*sqrt(2), center: center)
+
+            physics_body.mass = 0.1
+            physics_body.affectedByGravity = false
+            physics_body.collisionBitMask = 1
+
+            s.physicsBody = physics_body
             self.addChild(s)
         }
 
@@ -62,6 +71,7 @@ class GameScene: SKScene {
             sprite3.runAction(SKAction.repeatAction(action, count: 1))
         }
     }
+
 
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
