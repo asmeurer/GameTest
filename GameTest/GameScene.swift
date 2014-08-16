@@ -28,7 +28,6 @@ class GameScene: SKScene {
 
             physics_body.mass = 0.1
             physics_body.affectedByGravity = false
-            physics_body.collisionBitMask = 1
 
             s.physicsBody = physics_body
             self.addChild(s)
