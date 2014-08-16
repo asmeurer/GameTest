@@ -20,14 +20,14 @@ class GameScene: SKScene {
         //        self.addChild(myLabel)
         let center = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
 
-        for s in [sprite, sprite2, sprite3] {
+        for s in [sprite1, sprite2, sprite3] {
             s.xScale = 3
             s.yScale = 3
             s.position = center
-            var physics_body = SKPhysicsBody(circleOfRadius: 20*sqrt(2), center: center)
+            var physics_body = SKPhysicsBody(rectangleOfSize: sprite_size)
 
-            physics_body.mass = 0.1
             physics_body.affectedByGravity = false
+            physics_body.allowsRotation = false
 
             s.physicsBody = physics_body
             self.addChild(s)
@@ -35,7 +35,11 @@ class GameScene: SKScene {
 
     }
 
-    let sprite = SKSpriteNode(color: UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0), size: CGSize(width: 10, height: 10))
+    // XXX: Why does this have to be 30, 30 to get the physics right?
+    let sprite_size = CGSize(width: 30, height: 30)
+//    TODO: How can I use this variable in the definitions below?
+
+    let sprite1 = SKSpriteNode(color: UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0), size: CGSize(width: 10, height: 10))
     let sprite2 = SKSpriteNode(color: UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0), size: CGSize(width: 10, height: 10))
     let sprite3 = SKSpriteNode(color: UIColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.0), size: CGSize(width: 10, height: 10))
 
@@ -47,7 +51,7 @@ class GameScene: SKScene {
             let location = touch.locationInNode(self)
 
             let action = SKAction.moveTo(location, duration: 1)
-            sprite.runAction(SKAction.repeatAction(action, count: 1))
+            sprite1.runAction(SKAction.repeatAction(action, count: 1))
 
         }
     }
