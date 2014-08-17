@@ -22,8 +22,6 @@ class GameScene: SKScene {
         let center = CGPoint(x:CGRectGetMidX(self.frame), y:CGRectGetMidY(self.frame))
 
         for s in [sprite1, sprite2, sprite3, sprite4] {
-            s.xScale = 3
-            s.yScale = 3
             s.position = center
             var physics_body = SKPhysicsBody(rectangleOfSize: sprite_size)
 
@@ -37,14 +35,13 @@ class GameScene: SKScene {
 
     }
 
-    // XXX: Why does this have to be 30, 30 to get the physics right?
     let sprite_size = CGSize(width: 30, height: 30)
 //    TODO: How can I use this variable in the definitions below?
 
-    let sprite1 = SKSpriteNode(color: UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0), size: CGSize(width: 10, height: 10))
-    let sprite2 = SKSpriteNode(color: UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0), size: CGSize(width: 10, height: 10))
-    let sprite3 = SKSpriteNode(color: UIColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.0), size: CGSize(width: 10, height: 10))
-    let sprite4 = SKSpriteNode(color: UIColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 1.0), size: CGSize(width: 10, height: 10))
+    let sprite1 = SKSpriteNode(color: UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 1.0), size: CGSize(width: 30, height: 30))
+    let sprite2 = SKSpriteNode(color: UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 1.0), size: CGSize(width: 30, height: 30))
+    let sprite3 = SKSpriteNode(color: UIColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 1.0), size: CGSize(width: 30, height: 30))
+    let sprite4 = SKSpriteNode(color: UIColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 1.0), size: CGSize(width: 30, height: 30))
 
     var selected: [UITouch: SKNode] = [:]
 
@@ -69,6 +66,7 @@ class GameScene: SKScene {
 
         }
     }
+
 
 //    override func touchesMoved(touches: NSSet, withEvent event: UIEvent) {
 //
