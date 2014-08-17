@@ -47,6 +47,7 @@ class GameScene: SKScene {
     let sprite4 = SKSpriteNode(color: UIColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 1.0), size: CGSize(width: 10, height: 10))
 
     var selected: [UITouch: SKNode] = [:]
+    var offsets: [UITouch: CGPoint] = [:]
 
     func selectNodeForTouch(touchLocation: CGPoint) {
         // http://www.raywenderlich.com/44270/sprite-kit-tutorial-how-to-drag-and-drop-sprites
@@ -64,8 +65,9 @@ class GameScene: SKScene {
 //            let action = SKAction.moveTo(location, duration: 1)
 //            sprite1.runAction(SKAction.repeatAction(action, count: 1))
 
-            selected[touch as UITouch] = nodeAtPoint(location)
-
+            let node = nodeAtPoint(location)
+            selected[touch as UITouch] = node
+            offsets[touch as UITouch] = subtractVectorPoints(location, node.position)
 
         }
     }
@@ -106,9 +108,16 @@ class GameScene: SKScene {
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         for (touch, node) in selected {
+            // TODO: Don't try moving the scene
             let location = touch.locationInView(nil)
-            let action = SKAction.moveTo(location, duration: 0.01)
+            let offset = offsets[touch]
+            let new_location = subtractVectorPoints(location, offset!)
+            let action = SKAction.moveTo(new_location, duration: 0.01)
             node.runAction(SKAction.repeatAction(action, count: 1))
         }
     }
+}
+
+func subtractVectorPoints(a: CGPoint, b: CGPoint) -> CGPoint {
+    return CGPoint(x: a.x - b.x, y: a.y - b.y)
 }
