@@ -98,7 +98,9 @@ class GameScene: SKScene {
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
         for (touch, node) in selected {
-            // TODO: Don't try moving the scene'
+            if !contains([sprite1, sprite2, sprite3, sprite4], node) {
+                continue
+            }
             let location = touch.locationInNode(self)
             // We could also just set the node's position, like'
             // node.position = location
