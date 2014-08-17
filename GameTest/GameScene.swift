@@ -108,7 +108,11 @@ class GameScene: SKScene {
         for (touch, node) in selected {
             // TODO: Don't try moving the scene'
             let location = touch.locationInNode(self)
-            let action = SKAction.moveTo(location, duration: 0.01)
+            // We could also just set the node's position, like'
+            // node.position = location
+            // but this way seems better, and it also lets us add a delay by
+            // upping the duration if we want
+            let action = SKAction.moveTo(location, duration: 0.1)
             node.runAction(SKAction.repeatAction(action, count: 1))
         }
     }
