@@ -107,7 +107,7 @@ class GameScene: SKScene {
         /* Called before each frame is rendered */
         for (touch, node) in selected {
             // TODO: Don't try moving the scene'
-            let location = touch.locationInView(nil)
+            let location = touch.locationInNode(self)
             let action = SKAction.moveTo(location, duration: 0.01)
             node.runAction(SKAction.repeatAction(action, count: 1))
         }
