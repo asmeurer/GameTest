@@ -45,12 +45,6 @@ class GameScene: SKScene {
 
     var selected: [UITouch: SKNode] = [:]
 
-    func selectNodeForTouch(touchLocation: CGPoint) {
-        // http://www.raywenderlich.com/44270/sprite-kit-tutorial-how-to-drag-and-drop-sprites
-        let touchedNode = nodeAtPoint(touchLocation)
-
-
-    }
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
 
